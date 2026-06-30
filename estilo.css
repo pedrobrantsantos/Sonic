@@ -1,1 +1,69 @@
+/* ==========================================
+   BOTÃO DE LEITURA E ESTADOS DE INTERAÇÃO
+   ========================================== */
 
+/* Estilo Base do Botão */
+#btn-leitura {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  
+  padding: 12px 24px;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #007bff;
+  
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  cursor: pointer;
+  /* Transição suave para evitar piscadas bruscas em cliques rápidos */
+  transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+}
+
+/* Efeito Hover (Mouse passando por cima) 
+   O ':not(:disabled)' garante que o efeito só aconteça se o botão estiver ativo */
+#btn-leitura:hover:not(:disabled) {
+  background-color: #0056b3;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito Active (Momento do clique do usuário) */
+#btn-leitura:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* ==========================================
+   ESTADO BLOQUEADO / CARREGANDO
+   ========================================== */
+
+/* Quando o botão recebe o atributo 'disabled' via JavaScript */
+#btn-leitura:disabled {
+  background-color: #6c757d;
+  opacity: 0.65;
+  box-shadow: none;
+  transform: none;
+  
+  /* Muda o ponteiro do mouse para o ícone de "bloqueado" */
+  cursor: not-allowed; 
+}
+
+/* Animação opcional de Spinner (caso queira injetar um ícone de carregamento) */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
